@@ -1,0 +1,11 @@
+  <h2> Movies Directed by <%= @movie.director %></h2>
+
+  <ul>
+    <% @movies_with_same_director.each do |movie| %>
+    <li>
+        <%= link_to movie.title, movie_path(movie) %> (<%= movie.release_date.year %>)
+    </li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Back to Movie List', movies_path, class: 'btn btn-primary' %>

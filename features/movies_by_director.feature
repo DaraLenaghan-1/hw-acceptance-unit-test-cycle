@@ -1,4 +1,4 @@
-Feature: search for movies by director
+  Feature: search for movies by director
 
   As a movie buff
   So that I can find movies with my favorite director
@@ -14,8 +14,7 @@ Background: movies in database
   | THX-1138     | R      | George Lucas |   1971-03-11 |
 
 Scenario: add director to existing movie
-  When I go to the edit page for "Alien"
-  And  I fill in "Director" with "Ridley Scott"
+  When I assign "Ridley Scott" as the director for "Alien"
   And  I press "Update Movie Info"
   Then the director of "Alien" should be "Ridley Scott"
 
@@ -32,3 +31,10 @@ Scenario: can't find similar movies if we don't know director (sad path)
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+  
+Scenario: Edit Movie Information
+  Given I am on the details page for "Aladdin"
+  When I click on "Edit"
+  And I fill in "Director" with "Ridley Scott"
+  And I press "Update Movie Info"
+  Then the director of "Aladdin" should be "Ridley Scott"
